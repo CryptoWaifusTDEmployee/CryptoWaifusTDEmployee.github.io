@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="styles/styles.css">
+</head>
+
+<body>
+
+<h1><center>CryptoWaifusTD - The Degenerate NFT Collectable Game</center></h1>
+<h2><center>So you wanna work here?</center></h2>
+
+<br><p>You can convert up to 33.3% of your CWT salary to immediate CAD, or up to 100% of your CAD salary to CWT.<br>
+Each token will have a base price of $0.02 in Public Sale.<br>
+This is an important decision, choose carefully.</p>
+
+<p>Hello! Your base salary is $10/hr + 2400 CWT/hr.</p>
+
+<div class="slidecontainer">
+  <input type="range" min="-10" max="12" value="0" class="slider" id="myRange">
+  <p>Now your salary is...</p>
+  <p>$<span id="cad"></span>.00 + <span id="cwt"></span> CWT</p>
+</div>
+
+<script>
+	var slider = document.getElementById("myRange");
+	var cadoutput = document.getElementById("cad");
+	var cwtoutput = document.getElementById("cwt");
+	cadoutput.innerHTML = 10;
+	cwtoutput.innerHTML = 2400;
+
+	slider.oninput = function() {
+	  cadoutput.innerHTML = Number(this.value)+10;
+	  cwtoutput.innerHTML = Number(2400-(this.value*50));
+	}
+</script>
+
+</body>
+</html>
