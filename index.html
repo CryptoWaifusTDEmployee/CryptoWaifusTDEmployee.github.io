@@ -10,35 +10,65 @@
 <h1><center>CryptoWaifusTD - The Degenerate NFT Collectable Game</center></h1>
 <h2><center>So you wanna work here?</center></h2>
 
-<br><p>You can convert up to 25% of your CWT salary to immediate CAD, or up to 100% of your CAD salary to CWT.<br>
-Each token will have a base price of $0.02 in Public Sale.<br>
-This is an important decision, choose carefully.</p>
+<br><p>Hello Co-Founder, you can choose your CAD/CWT (CryptoWaifusTD Token) salary ratio.<br>
+Convert up to 25% of your CWT salary to CAD at Public Sale price ($0.02).<br>
+Or, convert your CAD to CWT.<br>
+You can convert remaining CWT at Strategic Sale price ($0.005) (4x less efficient conversion starts at $20).<br>
+<i>*CWT will aim to have an initial public price of $0.02 then go higher, but CWT may or may not ever hit the market.</i></p>
 
-<p>Hello! Your base salary is $10/hr + 2400 CWT/hr. Use this slider to help decide your preferred salary.</p>
+<p>Your base salary is $10/hr + 2000 CWT/hr.</p>
 <br>
+
+<h2>Salary Helper Calculator</h2>
+
+<style data="test" type="text/css"></style>
 
 <div class="slidecontainer">
   <span class="leftlabel">More CWT</span>
-  <input type="range" min="-10" max="12" value="0" class="slider" id="myRange">
+  <input id="rangeInput" type="range" min="-10" max="18" value="0" class="slider" id="rangeInput">
   <span class="rightlabel">More CAD</span>
   <p>Now your salary is...</p>
-  <p>$<span id="cad"></span>.00 + <span id="cwt"></span> CWT</p>
+  <p>$<span id="cad"></span> + <span id="cwt"></span> CWT</p>
 </div>
 
 <br><br><br><br>
-<p>Legal Documents (Digital signature required) - soon</p>
+<p>Legal Documents and Contracts for Founding Members (Digital Signature Required) - Soon</p>
 
 <script>
-	var slider = document.getElementById("myRange");
+	var slider = document.getElementById("rangeInput");
 	var cadoutput = document.getElementById("cad");
 	var cwtoutput = document.getElementById("cwt");
-	cadoutput.innerHTML = 10;
-	cwtoutput.innerHTML = 2400;
+	cadoutput.innerHTML = Number(10).toFixed(2);
+	cwtoutput.innerHTML = 2000;
 
 	slider.oninput = function() {
-	  cadoutput.innerHTML = Number(this.value)+10;
-	  cwtoutput.innerHTML = Number(2400-(this.value*50));
+	  cadoutput.innerHTML = Number((this.value*1.0)+10).toFixed(2);
+	  cwtoutput.innerHTML = Number(2000-(this.value*50));
+	  if (Number(this.value) > 10 && Number(this.value) < 18) {
+		//cadoutput.innerHTML = Number((this.value*0.25)+17.5).toFixed(2);
+		cwtoutput.innerHTML = Number(1500-((this.value-10)*200));
+	  }
+	  else if (Number(this.value) == 18) {
+	    cadoutput.innerHTML = '27.50';
+		cwtoutput.innerHTML = 0;
+	  }
 	}
+	
+	
+	const range = document.getElementById("rangeInput");
+	var style = document.querySelector('[data="test"]');
+
+	range.addEventListener("input", () => {
+	   const slider_value = range.value;
+	   let thumb_color;
+	   if (slider_value > 10) {
+		   thumb_color = "rgb(255, 0, 0)";
+	   }
+	   else {
+		   thumb_color = "rgb(0, 255, 0)";
+	   }
+	   style.innerHTML = `.slider::-webkit-slider-thumb { background-color: ${thumb_color} !important; } .slider:-moz-range-thumb {  ${thumb_color} !important; }`;
+	});
 </script>
 
 </body>
